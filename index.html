@@ -1,0 +1,1828 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sagara | Ocean Adventure di Jalur Lintas Selatan</title>
+
+    <!-- Stylesheet Offline: Font Poppins & Custom Utilities -->
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Tailwind CSS Offline -->
+    <script src="assets/tailwind.js"></script>
+
+    <!-- Lucide Icons Offline -->
+    <script src="assets/lucide.min.js"></script>
+
+    <!-- JavaScript Interaktivitas & Konfigurasi Offline -->
+    <script src="js/script.js"></script>
+
+    <!-- Tailwind Config based on PRD -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#167D92',   // Biru Laut
+                        accent: '#F4A261',    // Oranye Sunset
+                        base: '#FFF8ED',      // Putih Krem
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans text-gray-800 antialiased selection:bg-accent selection:text-white">
+
+    <!-- NAVBAR -->
+    <nav class="fixed w-full z-50 transition-all duration-300 backdrop-blur-md bg-base/90 border-b border-primary/10 shadow-sm"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer group" onclick="window.scrollTo(0,0)">
+                    <img src="images/logo.png" alt="Sagara Logo" class="h-10 md:h-12 w-auto object-contain mr-2.5 transition-transform group-hover:scale-105" />
+                    <span class="font-bold text-2xl text-primary tracking-tight">Sagara</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-6 text-sm">
+                    <a href="#keunggulan" class="text-gray-700 hover:text-primary font-semibold transition-colors">Keunggulan</a>
+                    <a href="#pantai" class="text-gray-700 hover:text-primary font-semibold transition-colors">Destinasi Pantai</a>
+                    <a href="#homestay" class="text-gray-700 hover:text-primary font-semibold transition-colors">Homestay</a>
+                    <a href="#kuliner" class="text-gray-700 hover:text-primary font-semibold transition-colors">Kuliner</a>
+                    <a href="#panduan" class="text-gray-700 hover:text-primary font-semibold transition-colors">Panduan</a>
+                    <a href="#umkm" class="text-gray-700 hover:text-primary font-semibold transition-colors">Usaha Lokal</a>
+                    <a href="#faq" class="text-gray-700 hover:text-primary font-semibold transition-colors">FAQ</a>
+                    <button onclick="openInWebModal('umum')"
+                        class="bg-accent hover:bg-orange-500 text-white px-5 py-2 rounded-full font-bold transition-all shadow-md hover:shadow-lg flex items-center flex-shrink-0">
+                        <i data-lucide="message-circle" class="w-4 h-4 mr-1.5"></i> Tanya Sagara
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-primary hover:text-accent focus:outline-none p-2" aria-label="Buka Menu">
+                        <i data-lucide="menu" class="h-7 w-7"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-base border-t border-primary/10 absolute w-full shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#keunggulan" class="mobile-link block px-3 py-2.5 rounded-md text-base font-medium text-gray-800 hover:text-primary hover:bg-primary/5">Keunggulan</a>
+                <a href="#pantai" class="mobile-link block px-3 py-2.5 rounded-md text-base font-medium text-gray-800 hover:text-primary hover:bg-primary/5">Destinasi Pantai</a>
+                <a href="#homestay" class="mobile-link block px-3 py-2.5 rounded-md text-base font-medium text-gray-800 hover:text-primary hover:bg-primary/5">Homestay & Cottage</a>
+                <a href="#kuliner" class="mobile-link block px-3 py-2.5 rounded-md text-base font-medium text-gray-800 hover:text-primary hover:bg-primary/5">Kuliner Seafood</a>
+                <a href="#panduan" class="mobile-link block px-3 py-2.5 rounded-md text-base font-medium text-gray-800 hover:text-primary hover:bg-primary/5">Panduan & Itinerary</a>
+                <a href="#umkm" class="mobile-link block px-3 py-2.5 rounded-md text-base font-medium text-gray-800 hover:text-primary hover:bg-primary/5">Usaha Lokal & UMKM</a>
+                <a href="#faq" class="mobile-link block px-3 py-2.5 rounded-md text-base font-medium text-gray-800 hover:text-primary hover:bg-primary/5">FAQ</a>
+                <button onclick="openInWebModal('umum')"
+                    class="mobile-link mt-4 block w-full text-center bg-accent hover:bg-orange-500 text-white px-5 py-3 rounded-xl font-bold shadow-md">
+                    Tanya Sagara
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative h-screen min-h-[600px] flex items-center justify-center pt-20">
+        <div class="absolute inset-0 z-0">
+            <img src="images/BBB.jpg" alt="Panorama Jalur Lintas Selatan" class="w-full h-full object-cover object-center" />
+            <!-- Overlay gradient untuk keterbacaan teks -->
+            <div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/40 md:to-transparent bg-black/30">
+            </div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
+            <div class="md:w-2/3 lg:w-1/2">
+                <span onclick="openInWebModal('umum')"
+                    class="inline-block py-1 px-3.5 rounded-full bg-accent/20 hover:bg-accent/30 text-accent font-semibold text-sm mb-4 backdrop-blur-sm border border-accent/50 cursor-pointer transition-all hover:scale-105">
+                    ✨ Ocean Adventure Menantimu
+                </span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 text-shadow">
+                    Healing Maksimal di Sepanjang <span class="text-accent">Jalur Lintas Selatan</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-100 mb-8 font-medium max-w-xl mx-auto md:mx-0 drop-shadow-md">
+                    Temukan surga tersembunyi, spot swafoto spektakuler, dan kuliner lezat dari Kediri menuju pesisir
+                    eksotis Jawa Timur.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <button onclick="openInWebModal('petualangan')"
+                        class="bg-accent hover:bg-orange-500 text-white px-8 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-xl flex items-center justify-center">
+                        <i data-lucide="map-pin" class="mr-2"></i> Mulai Petualangan
+                    </button>
+                    <a href="#keunggulan"
+                        class="hero-secondary-btn bg-primary hover:bg-teal-800 text-white border-2 border-white/40 px-8 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-xl flex items-center justify-center group">
+                        Pelajari Lebih Lanjut <i data-lucide="chevron-down" class="ml-2 group-hover:translate-y-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wave Decorator di Bawah -->
+        <div class="absolute bottom-0 w-full overflow-hidden leading-[0]">
+            <svg class="relative block w-full h-[50px] md:h-[80px]" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path
+                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118,137.24,130.6,206.5,116.7,246.3,108.6,285.3,86.6,321.39,56.44Z"
+                    fill="#FFF8ED"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- SECTION: 3 KEUNGGULAN UTAMA -->
+    <section id="keunggulan" class="py-20 md:py-28 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-primary font-bold text-3xl md:text-4xl mb-4">Kenapa Harus <span
+                        class="text-accent">Sagara</span>?</h2>
+                <div class="w-24 h-1 bg-accent mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto font-medium">Bukan sekadar perjalanan, tapi pengalaman yang
+                    memanjakan mata dan jiwa. Inilah yang akan kamu dapatkan.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Value Prop 1 -->
+                <div onclick="openLightbox('images/CCC.jpg', 'Panorama & Spot Swafoto Aesthetic', 'Mahakarya keindahan laut selatan Jawa dan deretan pegunungan yang memanjakan mata di sepanjang Jalur Lintas Selatan (JLS). Surganya spot swafoto kekinian!', 'Spot Foto JLS Tulungagung Blitar')"
+                    class="bg-white rounded-3xl p-8 shadow-[0_4px_20px_-4px_rgba(22,125,146,0.1)] hover-lift border border-primary/5 relative overflow-hidden cursor-pointer group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -z-10"></div>
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center">
+                            <i data-lucide="camera" class="w-8 h-8"></i>
+                        </div>
+                        <span class="text-xs bg-primary/10 text-primary font-bold px-3 py-1.5 rounded-full flex items-center group-hover:bg-primary group-hover:text-white transition-colors">
+                            <i data-lucide="image" class="w-3.5 h-3.5 mr-1"></i> Klik Foto
+                        </span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-primary transition-colors">Panorama & Spot Swafoto</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Menikmati langsung mahakarya keindahan laut selatan Jawa dan deretan pegunungan yang memanjakan
+                        mata. Surganya konten aesthetic!
+                    </p>
+                    <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-primary font-bold">
+                        <span class="flex items-center"><i data-lucide="maximize-2" class="w-3.5 h-3.5 mr-1.5"></i> Lihat Foto Panorama</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 transform group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Value Prop 2 -->
+                <div onclick="openLightbox('images/MULUS.jpg', 'Akses Jalan Aspal Mulus & Lebar JLS', 'Nikmati perjalanan super nyaman dengan konektivitas jalan yang lancar serta panduan rute lokasi wisata yang sangat mudah diikuti dari Kediri.', 'Jalur Lintas Selatan')"
+                    class="bg-white rounded-3xl p-8 shadow-[0_4px_20px_-4px_rgba(244,162,97,0.15)] hover-lift border border-accent/10 relative overflow-hidden transform md:-translate-y-4 cursor-pointer group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-bl-full -z-10"></div>
+                    <div class="flex items-center justify-between mb-6">
+                        <div
+                            class="w-16 h-16 bg-accent text-white rounded-2xl flex items-center justify-center shadow-lg shadow-accent/30">
+                            <i data-lucide="navigation" class="w-8 h-8"></i>
+                        </div>
+                        <span class="text-xs bg-accent/10 text-accent font-bold px-3 py-1.5 rounded-full flex items-center group-hover:bg-accent group-hover:text-white transition-colors">
+                            <i data-lucide="image" class="w-3.5 h-3.5 mr-1"></i> Klik Foto
+                        </span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-accent transition-colors">Akses Mulus & Mudah</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Nikmati perjalanan super nyaman dengan konektivitas jalan yang lancar serta panduan rute lokasi
+                        wisata yang sangat mudah diikuti dari Kediri.
+                    </p>
+                    <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-accent font-bold">
+                        <span class="flex items-center"><i data-lucide="maximize-2" class="w-3.5 h-3.5 mr-1.5"></i> Lihat Foto Akses Jalan</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 transform group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Value Prop 3 -->
+                <div onclick="openLightbox('images/D.jpg', 'Wisata Bahari & Santapan Seafood Segar', 'Dapatkan rekomendasi titik destinasi pantai terbaik sekaligus panduan wisata kuliner lokal yang wajib dicicipi saat bersantai di JLS.', 'Warung Pantai Sine Tulungagung')"
+                    class="bg-white rounded-3xl p-8 shadow-[0_4px_20px_-4px_rgba(22,125,146,0.1)] hover-lift border border-primary/5 relative overflow-hidden cursor-pointer group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -z-10"></div>
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center">
+                            <i data-lucide="utensils" class="w-8 h-8"></i>
+                        </div>
+                        <span class="text-xs bg-primary/10 text-primary font-bold px-3 py-1.5 rounded-full flex items-center group-hover:bg-primary group-hover:text-white transition-colors">
+                            <i data-lucide="image" class="w-3.5 h-3.5 mr-1"></i> Klik Foto
+                        </span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-primary transition-colors">Wisata Bahari & Kuliner</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Dapatkan rekomendasi titik destinasi pantai terbaik sekaligus panduan wisata kuliner lokal yang
+                        wajib dicicipi saat bersantai.
+                    </p>
+                    <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-primary font-bold">
+                        <span class="flex items-center"><i data-lucide="maximize-2" class="w-3.5 h-3.5 mr-1.5"></i> Lihat Foto Kuliner Seafood</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 transform group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION BARU: DESTINASI PANTAI EKSOTIS BLITAR - TULUNGAGUNG (JLS) -->
+    <section id="pantai" class="py-20 relative bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <span class="text-accent font-semibold uppercase tracking-wider text-sm">Eksplorasi Pesisir Selatan</span>
+                    <h2 class="text-primary font-bold text-3xl md:text-4xl mt-2 mb-4">Destinasi Pantai <span class="text-accent">Blitar & Tulungagung</span></h2>
+                    <p class="text-gray-600 max-w-2xl font-medium">Jelajahi deretan pantai paling eksotis dan hits di sepanjang Jalur Lintas Selatan (JLS). Klik lokasi untuk buka peta langsung di Google Maps!</p>
+                </div>
+                <button onclick="openInWebModal('rute')"
+                    class="hidden md:flex bg-primary hover:bg-teal-800 text-white px-6 py-3 rounded-full font-semibold items-center shadow-md hover:shadow-lg transition-all">
+                    <i data-lucide="map-pin" class="w-4 h-4 mr-2"></i> Tanya Sagara (Rute Pantai)
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Pantai 1: Gemah Tulungagung -->
+                <div class="bg-base rounded-3xl overflow-hidden shadow-[0_4px_20px_-4px_rgba(22,125,146,0.12)] hover-lift border border-primary/10 group flex flex-col">
+                    <div onclick="openLightbox('images/pantai_gemah.jpg', 'Pantai Gemah Tulungagung', 'Pantai teluk dengan ombak tenang, dikelilingi hutan pinus rindang. Tersedia ATV dan perahu.', 'Pantai Gemah Tulungagung')"
+                        class="relative h-60 overflow-hidden cursor-pointer">
+                        <img src="images/pantai_gemah.jpg" alt="Pantai Gemah Tulungagung" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md backdrop-blur-sm">
+                            📍 Tulungagung • JLS Lot 6
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-bold text-gray-800">Pantai Gemah</h3>
+                                <span class="text-amber-500 font-bold text-xs flex items-center bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200"><i data-lucide="star" class="w-3.5 h-3.5 fill-current mr-1"></i> 4.9</span>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                Pantai teluk dengan ombak relatif tenang, dikelilingi hutan pinus rindang. Tersedia wahana ATV, perahu wisata, dan fasilitas super lengkap di tepi JLS.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-gray-200/60 flex flex-col sm:flex-row items-center gap-2">
+                            <button onclick="openOfflineMap('gemah')"
+                                class="w-full sm:w-auto flex-1 bg-accent hover:bg-orange-500 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-colors shadow-sm flex items-center justify-center">
+                                <i data-lucide="map-pin" class="w-3.5 h-3.5 mr-1.5"></i> Peta Offline & Maps
+                            </button>
+                            <button onclick="openInWebModal('rute')"
+                                class="w-full sm:w-auto flex-1 bg-primary/10 hover:bg-primary/20 text-primary text-xs font-bold py-2.5 px-4 rounded-xl transition-colors flex items-center justify-center">
+                                <i data-lucide="message-square" class="w-3.5 h-3.5 mr-1.5"></i> Info Rute
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pantai 2: Tambakrejo Blitar -->
+                <div class="bg-base rounded-3xl overflow-hidden shadow-[0_4px_20px_-4px_rgba(22,125,146,0.12)] hover-lift border border-primary/10 group flex flex-col">
+                    <div onclick="openLightbox('images/pantai_tambakrejo.jpg', 'Pantai Tambakrejo Blitar', 'Destinasi pantai pasir putih paling populer di Blitar dengan Tempat Pelelangan Ikan (TPI).', 'Pantai Tambakrejo Blitar')"
+                        class="relative h-60 overflow-hidden cursor-pointer">
+                        <img src="images/pantai_tambakrejo.jpg" alt="Pantai Tambakrejo Blitar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 bg-accent text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md backdrop-blur-sm">
+                            📍 Blitar • JLS Pesisir
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-bold text-gray-800">Pantai Tambakrejo</h3>
+                                <span class="text-amber-500 font-bold text-xs flex items-center bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200"><i data-lucide="star" class="w-3.5 h-3.5 fill-current mr-1"></i> 4.8</span>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                Destinasi pantai pasir putih paling populer di Blitar. Memiliki tempat pelelangan ikan (TPI) segar, kuliner bakar ikan khas, dan pemandangan perahu nelayan.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-gray-200/60 flex flex-col sm:flex-row items-center gap-2">
+                            <button onclick="openOfflineMap('tambakrejo')"
+                                class="w-full sm:w-auto flex-1 bg-accent hover:bg-orange-500 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-colors shadow-sm flex items-center justify-center">
+                                <i data-lucide="map-pin" class="w-3.5 h-3.5 mr-1.5"></i> Peta Offline & Maps
+                            </button>
+                            <button onclick="openInWebModal('rute')"
+                                class="w-full sm:w-auto flex-1 bg-primary/10 hover:bg-primary/20 text-primary text-xs font-bold py-2.5 px-4 rounded-xl transition-colors flex items-center justify-center">
+                                <i data-lucide="message-square" class="w-3.5 h-3.5 mr-1.5"></i> Info Rute
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pantai 3: Serang Blitar -->
+                <div class="bg-base rounded-3xl overflow-hidden shadow-[0_4px_20px_-4px_rgba(22,125,146,0.12)] hover-lift border border-primary/10 group flex flex-col">
+                    <div onclick="openLightbox('images/pantai_serang.jpg', 'Pantai Serang Blitar', 'Hamparan pantai pasir luas favorit spot sunset kejingaan dan deretan cemara udang.', 'Pantai Serang Blitar')"
+                        class="relative h-60 overflow-hidden cursor-pointer">
+                        <img src="images/pantai_serang.jpg" alt="Pantai Serang Blitar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 bg-accent text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md backdrop-blur-sm">
+                            📍 Blitar • JLS Pesisir
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-bold text-gray-800">Pantai Serang</h3>
+                                <span class="text-amber-500 font-bold text-xs flex items-center bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200"><i data-lucide="star" class="w-3.5 h-3.5 fill-current mr-1"></i> 4.9</span>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                Hamparan pantai pasir yang sangat luas dengan deretan cemara udang. Terkenal sebagai spot menikmati matahari terbenam (sunset) bernuansa kejingaan magis.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-gray-200/60 flex flex-col sm:flex-row items-center gap-2">
+                            <button onclick="openOfflineMap('serang')"
+                                class="w-full sm:w-auto flex-1 bg-accent hover:bg-orange-500 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-colors shadow-sm flex items-center justify-center">
+                                <i data-lucide="map-pin" class="w-3.5 h-3.5 mr-1.5"></i> Peta Offline & Maps
+                            </button>
+                            <button onclick="openInWebModal('rute')"
+                                class="w-full sm:w-auto flex-1 bg-primary/10 hover:bg-primary/20 text-primary text-xs font-bold py-2.5 px-4 rounded-xl transition-colors flex items-center justify-center">
+                                <i data-lucide="message-square" class="w-3.5 h-3.5 mr-1.5"></i> Info Rute
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pantai 4: Sine Tulungagung -->
+                <div class="bg-base rounded-3xl overflow-hidden shadow-[0_4px_20px_-4px_rgba(22,125,146,0.12)] hover-lift border border-primary/5 group flex flex-col">
+                    <div class="relative h-60 overflow-hidden">
+                        <img src="images/CCC.jpg" alt="Pantai Sine Tulungagung" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md backdrop-blur-sm">
+                            📍 Tulungagung • JLS Lot 6A
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-bold text-gray-800">Pantai Sine</h3>
+                                <span class="text-amber-500 font-bold text-xs flex items-center bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200"><i data-lucide="star" class="w-3.5 h-3.5 fill-current mr-1"></i> 4.8</span>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                Pantai alami bersebelahan langsung dengan bentangan tebing JLS. Terkenal dengan pesona sunrise terbit di balik samudra dan suasana nelayan yang ramah.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-gray-200/60 flex flex-col sm:flex-row items-center gap-2">
+                            <button onclick="openOfflineMap('sine')"
+                                class="w-full sm:w-auto flex-1 bg-accent hover:bg-orange-500 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-colors shadow-sm flex items-center justify-center">
+                                <i data-lucide="map-pin" class="w-3.5 h-3.5 mr-1.5"></i> Peta Offline & Maps
+                            </button>
+                            <button onclick="openInWebModal('rute')"
+                                class="w-full sm:w-auto flex-1 bg-primary/10 hover:bg-primary/20 text-primary text-xs font-bold py-2.5 px-4 rounded-xl transition-colors flex items-center justify-center">
+                                <i data-lucide="message-square" class="w-3.5 h-3.5 mr-1.5"></i> Info Rute
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pantai 5: Pasur & Molang -->
+                <div class="bg-base rounded-3xl overflow-hidden shadow-[0_4px_20px_-4px_rgba(22,125,146,0.12)] hover-lift border border-primary/5 group flex flex-col">
+                    <div class="relative h-60 overflow-hidden">
+                        <img src="images/AAA.png" alt="Pantai Pasur & Molang" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 bg-teal-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md backdrop-blur-sm">
+                            📍 Perbatasan Tulungagung-Blitar
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-bold text-gray-800">Pantai Pasur & Molang</h3>
+                                <span class="text-amber-500 font-bold text-xs flex items-center bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200"><i data-lucide="star" class="w-3.5 h-3.5 fill-current mr-1"></i> 4.9</span>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                Terletak di perbatasan JLS Tulungagung-Blitar. Menawarkan keindahan tebing karang megah, pasir eksotis, serta muara sungai berair jernih di tepi samudra.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-gray-200/60 flex flex-col sm:flex-row items-center gap-2">
+                            <button onclick="openOfflineMap('pasur')"
+                                class="w-full sm:w-auto flex-1 bg-accent hover:bg-orange-500 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-colors shadow-sm flex items-center justify-center">
+                                <i data-lucide="map-pin" class="w-3.5 h-3.5 mr-1.5"></i> Peta Offline & Maps
+                            </button>
+                            <button onclick="openInWebModal('rute')"
+                                class="w-full sm:w-auto flex-1 bg-primary/10 hover:bg-primary/20 text-primary text-xs font-bold py-2.5 px-4 rounded-xl transition-colors flex items-center justify-center">
+                                <i data-lucide="message-square" class="w-3.5 h-3.5 mr-1.5"></i> Info Rute
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pantai 6: Bayem & Klotok -->
+                <div class="bg-base rounded-3xl overflow-hidden shadow-[0_4px_20px_-4px_rgba(22,125,146,0.12)] hover-lift border border-primary/5 group flex flex-col">
+                    <div class="relative h-60 overflow-hidden">
+                        <img src="images/BBB.jpg" alt="Pantai Bayem & Klotok" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md backdrop-blur-sm">
+                            📍 Tulungagung • JLS Pesisir
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-bold text-gray-800">Pantai Bayem & Klotok</h3>
+                                <span class="text-amber-500 font-bold text-xs flex items-center bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200"><i data-lucide="star" class="w-3.5 h-3.5 fill-current mr-1"></i> 4.7</span>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                Berada di sebelah Pantai Gemah. Lebih tenang dan sepi, cocok sekali untuk bersantai menikmati angin sepoi-sepoi dan suara hempasan ombak pesisir JLS.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-gray-200/60 flex flex-col sm:flex-row items-center gap-2">
+                            <button onclick="openOfflineMap('bayem')"
+                                class="w-full sm:w-auto flex-1 bg-accent hover:bg-orange-500 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-colors shadow-sm flex items-center justify-center">
+                                <i data-lucide="map-pin" class="w-3.5 h-3.5 mr-1.5"></i> Peta Offline & Maps
+                            </button>
+                            <button onclick="openInWebModal('rute')"
+                                class="w-full sm:w-auto flex-1 bg-primary/10 hover:bg-primary/20 text-primary text-xs font-bold py-2.5 px-4 rounded-xl transition-colors flex items-center justify-center">
+                                <i data-lucide="message-square" class="w-3.5 h-3.5 mr-1.5"></i> Info Rute
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <button onclick="openInWebModal('rute')"
+                class="mt-10 w-full md:hidden flex justify-center text-white font-semibold items-center bg-primary py-3.5 rounded-full shadow-md">
+                <i data-lucide="map-pin" class="w-4 h-4 mr-2"></i> Tanya Sagara (Rute Pantai)
+            </button>
+        </div>
+    </section>
+
+    <!-- SECTION BARU 1: HOMESTAY & PENGINAPAN PESISIR JLS -->
+    <section id="homestay" class="py-20 bg-primary/[0.03] relative border-t border-primary/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <span class="text-accent font-semibold uppercase tracking-wider text-sm">Istirahat Nyaman Tepi Samudra</span>
+                    <h2 class="text-primary font-bold text-3xl md:text-4xl mt-2 mb-4">Homestay & Cottage <span class="text-accent">Pesisir JLS</span></h2>
+                    <p class="text-gray-600 max-w-2xl font-medium">Temukan penginapan terbaik milik warga lokal dengan view samudra langsung, suasana asri, dan fasilitas lengkap untuk liburan keluarga maupun bestie.</p>
+                </div>
+                <button onclick="openInWebModal('homestay')"
+                    class="hidden md:flex bg-primary hover:bg-teal-800 text-white px-6 py-3 rounded-full font-semibold items-center shadow-md hover:shadow-lg transition-all">
+                    <i data-lucide="home" class="w-4 h-4 mr-2"></i> Tanya Sagara (Booking Homestay)
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Homestay 1: Villa Tebing Sine Sunset View -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-[0_4px_20px_-4px_rgba(22,125,146,0.12)] hover-lift border border-primary/10 flex flex-col group">
+                    <div onclick="openLightbox('images/CCC.jpg', 'Villa Tebing Sine Sunset View', 'Homestay eksklusif di atas tebing Pantai Sine dengan balkon langsung menghadap matahari terbenam.', 'Pantai Sine Tulungagung')"
+                        class="relative h-52 overflow-hidden cursor-pointer">
+                        <img src="images/CCC.jpg" alt="Villa Tebing Sine" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-3 left-3 bg-primary text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md">
+                            📍 Tebing Sine • Tulungagung
+                        </span>
+                        <span class="absolute bottom-3 right-3 bg-black/60 backdrop-blur-sm text-white text-[11px] font-medium px-2.5 py-1 rounded-lg flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i data-lucide="maximize-2" class="w-3 h-3 mr-1"></i> Foto Kamar
+                        </span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-1">
+                                <h3 class="text-lg font-bold text-gray-800">Villa Tebing Sine View</h3>
+                                <span class="text-amber-500 font-bold text-xs flex items-center bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200"><i data-lucide="star" class="w-3 h-3 fill-current mr-1"></i> 4.9</span>
+                            </div>
+                            <p class="text-xs text-gray-500 mb-3">View Balkon Sunset • Suasana Private</p>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md font-medium">📶 Free Wi-Fi</span>
+                                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md font-medium">❄️ Full AC</span>
+                                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md font-medium">🔥 Grill Seafood</span>
+                            </div>
+                        </div>
+                        <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] text-gray-400 block">Mulai dari</span>
+                                <span class="text-sm font-bold text-accent">Rp 250.000 <span class="text-[10px] text-gray-500 font-normal">/malam</span></span>
+                            </div>
+                            <button onclick="openInWebModal('homestay')"
+                                class="bg-primary hover:bg-teal-800 text-white text-xs font-bold py-2 px-3.5 rounded-xl transition-colors shadow-sm">
+                                Cek Room
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Homestay 2: Pinus Beach Cottage Gemah -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-[0_4px_20px_-4px_rgba(22,125,146,0.12)] hover-lift border border-primary/10 flex flex-col group">
+                    <div onclick="openLightbox('images/pantai_gemah.jpg', 'Pinus Beach Cottage Gemah', 'Cottage kayu estetis dikelilingi rindangnya hutan pinus dan pantai Gemah.', 'Pantai Gemah Tulungagung')"
+                        class="relative h-52 overflow-hidden cursor-pointer">
+                        <img src="images/pantai_gemah.jpg" alt="Pinus Cottage Gemah" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-3 left-3 bg-accent text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md">
+                            📍 Pantai Gemah • JLS Lot 6
+                        </span>
+                        <span class="absolute bottom-3 right-3 bg-black/60 backdrop-blur-sm text-white text-[11px] font-medium px-2.5 py-1 rounded-lg flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i data-lucide="maximize-2" class="w-3 h-3 mr-1"></i> Foto Kamar
+                        </span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-1">
+                                <h3 class="text-lg font-bold text-gray-800">Pinus Cottage Gemah</h3>
+                                <span class="text-amber-500 font-bold text-xs flex items-center bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200"><i data-lucide="star" class="w-3 h-3 fill-current mr-1"></i> 4.8</span>
+                            </div>
+                            <p class="text-xs text-gray-500 mb-3">Dekat Wahana ATV • 1 Menit ke Pantai</p>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md font-medium">👨‍👩‍👧‍👦 Kamar Keluarga</span>
+                                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md font-medium">🚗 Parkir Bus</span>
+                                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md font-medium">🍳 Sarapan Lokal</span>
+                            </div>
+                        </div>
+                        <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] text-gray-400 block">Mulai dari</span>
+                                <span class="text-sm font-bold text-accent">Rp 200.000 <span class="text-[10px] text-gray-500 font-normal">/malam</span></span>
+                            </div>
+                            <button onclick="openInWebModal('homestay')"
+                                class="bg-primary hover:bg-teal-800 text-white text-xs font-bold py-2 px-3.5 rounded-xl transition-colors shadow-sm">
+                                Cek Room
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Homestay 3: Homestay Pasir Putih Tambakrejo -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-[0_4px_20px_-4px_rgba(22,125,146,0.12)] hover-lift border border-primary/10 flex flex-col group">
+                    <div onclick="openLightbox('images/pantai_tambakrejo.jpg', 'Homestay Pasir Putih Tambakrejo', 'Penginapan ramah kantong dekat TPI ikan bakar Tambakrejo Blitar.', 'Pantai Tambakrejo Blitar')"
+                        class="relative h-52 overflow-hidden cursor-pointer">
+                        <img src="images/pantai_tambakrejo.jpg" alt="Homestay Pasir Putih" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-3 left-3 bg-teal-600 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md">
+                            📍 Tambakrejo • Blitar
+                        </span>
+                        <span class="absolute bottom-3 right-3 bg-black/60 backdrop-blur-sm text-white text-[11px] font-medium px-2.5 py-1 rounded-lg flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i data-lucide="maximize-2" class="w-3 h-3 mr-1"></i> Foto Kamar
+                        </span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-1">
+                                <h3 class="text-lg font-bold text-gray-800">Homestay Pasir Putih</h3>
+                                <span class="text-amber-500 font-bold text-xs flex items-center bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200"><i data-lucide="star" class="w-3 h-3 fill-current mr-1"></i> 4.9</span>
+                            </div>
+                            <p class="text-xs text-gray-500 mb-3">Dekat Pelelangan Ikan • Kasur Empuk</p>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md font-medium">🛏️ Springbed Double</span>
+                                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md font-medium">🚿 Kamar Mandi Dalam</span>
+                                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md font-medium">☕ Teh/Kopi Gratis</span>
+                            </div>
+                        </div>
+                        <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] text-gray-400 block">Mulai dari</span>
+                                <span class="text-sm font-bold text-accent">Rp 180.000 <span class="text-[10px] text-gray-500 font-normal">/malam</span></span>
+                            </div>
+                            <button onclick="openInWebModal('homestay')"
+                                class="bg-primary hover:bg-teal-800 text-white text-xs font-bold py-2 px-3.5 rounded-xl transition-colors shadow-sm">
+                                Cek Room
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Homestay 4: Cemara Breeze Cottage Serang -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-[0_4px_20px_-4px_rgba(22,125,146,0.12)] hover-lift border border-primary/10 flex flex-col group">
+                    <div onclick="openLightbox('images/pantai_serang.jpg', 'Cemara Breeze Cottage Serang', 'Cottage dikelilingi deretan pohon cemara udang Pantai Serang dengan area bonfire.', 'Pantai Serang Blitar')"
+                        class="relative h-52 overflow-hidden cursor-pointer">
+                        <img src="images/pantai_serang.jpg" alt="Cemara Breeze Cottage" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-3 left-3 bg-primary text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md">
+                            📍 Pantai Serang • Blitar
+                        </span>
+                        <span class="absolute bottom-3 right-3 bg-black/60 backdrop-blur-sm text-white text-[11px] font-medium px-2.5 py-1 rounded-lg flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i data-lucide="maximize-2" class="w-3 h-3 mr-1"></i> Foto Kamar
+                        </span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-1">
+                                <h3 class="text-lg font-bold text-gray-800">Cemara Breeze Cottage</h3>
+                                <span class="text-amber-500 font-bold text-xs flex items-center bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200"><i data-lucide="star" class="w-3 h-3 fill-current mr-1"></i> 4.9</span>
+                            </div>
+                            <p class="text-xs text-gray-500 mb-3">Latar Cemara Udang • Area Bonfire</p>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md font-medium">⛺ Camping Ground</span>
+                                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md font-medium">🌅 Sunset Point</span>
+                                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md font-medium">🥥 Fresh Coconut</span>
+                            </div>
+                        </div>
+                        <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] text-gray-400 block">Mulai dari</span>
+                                <span class="text-sm font-bold text-accent">Rp 220.000 <span class="text-[10px] text-gray-500 font-normal">/malam</span></span>
+                            </div>
+                            <button onclick="openInWebModal('homestay')"
+                                class="bg-primary hover:bg-teal-800 text-white text-xs font-bold py-2 px-3.5 rounded-xl transition-colors shadow-sm">
+                                Cek Room
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION TAMBAHAN: GALERI / SPOT AESTHETIC -->
+    <section id="galeri" class="py-20 bg-primary/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-primary font-bold text-3xl md:text-4xl mb-4">Vibe di <span
+                            class="text-accent">JLS</span></h2>
+                    <p class="text-gray-600 max-w-lg font-medium">Bikin feeds IG atau TikTok kamu makin FYP dengan
+                            pemandangan tiada dua ini.</p>
+                </div>
+                <button onclick="openInWebModal('spot')"
+                    class="hidden md:flex text-accent font-semibold items-center hover:text-orange-600 group">
+                    Tanya Sagara (Spot Foto) <i data-lucide="arrow-right"
+                        class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform"></i>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                <div onclick="openLightbox('images/CCC.jpg', 'Spot Santai Pinggir Pantai JLS', 'Nikmati suasana santai dengan lanskap pesisir laut selatan.', 'Pantai Sine Tulungagung')"
+                    class="col-span-2 md:col-span-2 row-span-2 overflow-hidden rounded-3xl shadow-lg relative group cursor-pointer">
+                    <img src="images/CCC.jpg" alt="Pantai JLS"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 min-h-[300px] md:min-h-[400px]">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <span class="text-white font-bold text-xl flex items-center"><i data-lucide="maximize-2" class="w-5 h-5 mr-2"></i> Spot Santai Pinggir Pantai</span>
+                    </div>
+                </div>
+                <div onclick="openLightbox('images/D.jpg', 'Kuliner Seafood Lokal JLS', 'Aneka hidangan laut segar bakar rempah di pinggir pantai.', 'Warung Pantai Sine Tulungagung')"
+                    class="overflow-hidden rounded-3xl shadow-lg relative group cursor-pointer">
+                    <img src="images/D.jpg" alt="Kuliner"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 min-h-[150px] md:min-h-[200px]">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-semibold flex items-center"><i data-lucide="maximize-2" class="w-4 h-4 mr-1.5"></i> Kuliner Seafood Lokal</span>
+                    </div>
+                </div>
+                <div onclick="openLightbox('images/MULUS.jpg', 'Aspal Mulus Membelah Bukit', 'Infrastruktur jalan JLS yang nyaman dan memanjakan pengendara.', 'Jalur Lintas Selatan')"
+                    class="overflow-hidden rounded-3xl shadow-lg relative group cursor-pointer">
+                    <img src="images/MULUS.jpg" alt="Jalan Mulus"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 min-h-[150px] md:min-h-[200px]">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-semibold flex items-center"><i data-lucide="maximize-2" class="w-4 h-4 mr-1.5"></i> Aspal Mulus JLS</span>
+                    </div>
+                </div>
+                <div onclick="openLightbox('images/AAA.png', 'Sunset Magis Laut Selatan', 'Momen matahari terbenam dengan warna kejingaan spektakuler.', 'Pantai Pasur Tulungagung')"
+                    class="col-span-2 overflow-hidden rounded-3xl shadow-lg relative group cursor-pointer">
+                    <img src="images/AAA.png" alt="Senja"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 h-[150px] md:h-[200px]">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-semibold text-lg flex items-center"><i data-lucide="maximize-2" class="w-5 h-5 mr-2"></i> Sunset Magis Laut Selatan</span>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="openInWebModal('spot')"
+                class="mt-8 w-full md:hidden flex justify-center text-accent font-semibold items-center bg-white py-3 rounded-full shadow-sm border border-accent/20">
+                Tanya Sagara (Spot Foto) <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- SECTION: REKOMENDASI KULINER PESISIR JLS -->
+    <section id="kuliner" class="py-20 relative bg-primary/[0.02]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <span class="text-accent font-semibold uppercase tracking-wider text-sm">Cita Rasa Khas Pesisir</span>
+                    <h2 class="text-primary font-bold text-3xl md:text-4xl mt-2 mb-4">Surga Kuliner & <span class="text-accent">Seafood Segar</span></h2>
+                    <p class="text-gray-600 max-w-xl font-medium">Dari hidangan laut segar bakar bumbu khas hingga aneka dessert buah tropis pelepas dahaga, semuanya siap melengkapi petualanganmu di JLS.</p>
+                </div>
+                <button onclick="openInWebModal('kuliner')"
+                    class="hidden md:flex bg-accent hover:bg-orange-500 text-white px-6 py-3 rounded-full font-semibold items-center shadow-md hover:shadow-lg transition-all">
+                    <i data-lucide="utensils" class="w-4 h-4 mr-2"></i> Tanya Sagara (Kuliner)
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Kuliner 1: Ikan Bakar & Seafood Platter -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-[0_4px_20px_-4px_rgba(22,125,146,0.1)] hover-lift border border-primary/5 group flex flex-col">
+                    <div onclick="openLightbox('images/D.jpg', 'Ikan Bakar & Platter Seafood Pantai', 'Ikan laut tangkapan nelayan lokal dibakar dengan bumbu rempah aromatik, disajikan bersama kelapa muda dingin, aneka sambal, dan lalapan segar di pinggir pantai JLS.', 'Warung Pantai Sine Tulungagung')"
+                        class="relative h-56 overflow-hidden cursor-pointer">
+                        <img src="images/D.jpg" alt="Ikan Bakar Tepi Pantai" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 bg-accent text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
+                            🔥 Rekomendasi Utama
+                        </span>
+                        <span class="absolute bottom-3 right-3 bg-black/60 backdrop-blur-sm text-white text-[11px] font-medium px-2.5 py-1 rounded-lg flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i data-lucide="maximize-2" class="w-3 h-3 mr-1"></i> Klik Foto
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-bold text-gray-800">Ikan Bakar & Platter Pantai</h3>
+                                <span class="text-accent font-bold text-sm">Favorit</span>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                Ikan laut tangkapan nelayan lokal dibakar dengan bumbu rempah aromatik, disajikan bersama kelapa muda dingin, aneka sambal, dan lalapan segar di pinggir pantai.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+                            <span class="flex items-center"><i data-lucide="map-pin" class="w-3.5 h-3.5 mr-1 text-primary"></i> Warung Pantai Sine & Pasur</span>
+                            <span class="flex items-center text-amber-500 font-semibold"><i data-lucide="star" class="w-3.5 h-3.5 fill-current mr-1"></i> 4.9</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kuliner 2: Mie Kepiting Seafood Rempah -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-[0_4px_20px_-4px_rgba(22,125,146,0.1)] hover-lift border border-primary/5 group flex flex-col">
+                    <div onclick="openLightbox('images/E.jpg', 'Mie Kepiting Bumbu Rempah', 'Olahan mie kenyal berbalut bumbu rempah pedas khas Jawa Timuran dengan topping kepiting laut utuh capit tebal yang manis dan gurih.', 'Resto Pesisir JLS')"
+                        class="relative h-56 overflow-hidden cursor-pointer">
+                        <img src="images/E.jpg" alt="Mie Kepiting Rempah" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
+                            🦀 Wajib Coba
+                        </span>
+                        <span class="absolute bottom-3 right-3 bg-black/60 backdrop-blur-sm text-white text-[11px] font-medium px-2.5 py-1 rounded-lg flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i data-lucide="maximize-2" class="w-3 h-3 mr-1"></i> Klik Foto
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-bold text-gray-800">Mie Kepiting Bumbu Rempah</h3>
+                                <span class="text-accent font-bold text-sm">Pedas Gurih</span>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                Olahan mie kenyal berbalut bumbu rempah pedas khas Jawa Timuran dengan topping kepiting laut utuh capit tebal yang manis dan gurih.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+                            <span class="flex items-center"><i data-lucide="map-pin" class="w-3.5 h-3.5 mr-1 text-primary"></i> Resto Pesisir JLS</span>
+                            <span class="flex items-center text-amber-500 font-semibold"><i data-lucide="star" class="w-3.5 h-3.5 fill-current mr-1"></i> 4.8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kuliner 3: Seafood Saus Padang Tumpah -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-[0_4px_20px_-4px_rgba(22,125,146,0.1)] hover-lift border border-primary/5 group flex flex-col">
+                    <div onclick="openLightbox('images/images (1).jpg', 'Seafood Tumpah Saus Padang', 'Kombinasi kepiting, kerang dara segar, udang, dan cumi yang dimasak dengan saus padang kental pedas manis berlimpah. Paling pas disantap bareng bestie!', 'Sentra Kuliner Pesisir')"
+                        class="relative h-56 overflow-hidden cursor-pointer">
+                        <img src="images/images (1).jpg" alt="Seafood Saus Padang Tumpah" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 bg-red-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
+                            🌶️ Paling Viral
+                        </span>
+                        <span class="absolute bottom-3 right-3 bg-black/60 backdrop-blur-sm text-white text-[11px] font-medium px-2.5 py-1 rounded-lg flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i data-lucide="maximize-2" class="w-3 h-3 mr-1"></i> Klik Foto
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-bold text-gray-800">Seafood Tumpah Saus Padang</h3>
+                                <span class="text-accent font-bold text-sm">Porsi Ramean</span>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                Kombinasi kepiting, kerang dara segar, udang, dan cumi yang dimasak dengan saus padang kental pedas manis berlimpah. Paling pas disantap bareng bestie!
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+                            <span class="flex items-center"><i data-lucide="map-pin" class="w-3.5 h-3.5 mr-1 text-primary"></i> Sentra Kuliner Pesisir</span>
+                            <span class="flex items-center text-amber-500 font-semibold"><i data-lucide="star" class="w-3.5 h-3.5 fill-current mr-1"></i> 4.9</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kuliner 4: Es Teler Durian Sunset -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-[0_4px_20px_-4px_rgba(22,125,146,0.1)] hover-lift border border-primary/5 group flex flex-col">
+                    <div onclick="openLightbox('images/A.jpg', 'Es Teler & Kelapa Sunset', 'Paduan alpukat mentega, potongan nangka wangi, kelapa muda serut, dan mutiara disiram kental manis. Sempurna dinikmati sambil menatap matahari terbenam.', 'Gazebo Sunset View')"
+                        class="relative h-56 overflow-hidden cursor-pointer">
+                        <img src="images/A.jpg" alt="Es Teler Sunset Pantai" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 bg-amber-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
+                            🍧 Favorit Sore
+                        </span>
+                        <span class="absolute bottom-3 right-3 bg-black/60 backdrop-blur-sm text-white text-[11px] font-medium px-2.5 py-1 rounded-lg flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i data-lucide="maximize-2" class="w-3 h-3 mr-1"></i> Klik Foto
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-bold text-gray-800">Es Teler & Kelapa Sunset</h3>
+                                <span class="text-accent font-bold text-sm">Segar Manis</span>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                Paduan alpukat mentega, potongan nangka wangi, kelapa muda serut, dan mutiara disiram kental manis. Sempurna dinikmati sambil menatap matahari terbenam.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+                            <span class="flex items-center"><i data-lucide="map-pin" class="w-3.5 h-3.5 mr-1 text-primary"></i> Gazebo Sunset View</span>
+                            <span class="flex items-center text-amber-500 font-semibold"><i data-lucide="star" class="w-3.5 h-3.5 fill-current mr-1"></i> 4.9</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kuliner 5: Tropical Fruit Shaved Ice -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-[0_4px_20px_-4px_rgba(22,125,146,0.1)] hover-lift border border-primary/5 group flex flex-col">
+                    <div onclick="openLightbox('images/B.jpg', 'Tropical Shaved Ice Bowl', 'Semangkuk es serut kekinian bermandikan buah segar kiwi, stroberi, buah naga, dan sirup tropis warna-warni yang estetik dan memanjakan mata.', 'Cafe Tebing JLS')"
+                        class="relative h-56 overflow-hidden cursor-pointer">
+                        <img src="images/B.jpg" alt="Tropical Shaved Ice" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 bg-emerald-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
+                            🥝 Aesthetic Cafe
+                        </span>
+                        <span class="absolute bottom-3 right-3 bg-black/60 backdrop-blur-sm text-white text-[11px] font-medium px-2.5 py-1 rounded-lg flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i data-lucide="maximize-2" class="w-3 h-3 mr-1"></i> Klik Foto
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-bold text-gray-800">Tropical Shaved Ice Bowl</h3>
+                                <span class="text-accent font-bold text-sm">Spot Foto</span>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                Semangkuk es serut kekinian bermandikan buah segar kiwi, stroberi, buah naga, dan sirup tropis warna-warni yang estetik dan memanjakan mata.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+                            <span class="flex items-center"><i data-lucide="map-pin" class="w-3.5 h-3.5 mr-1 text-primary"></i> Cafe Tebing JLS</span>
+                            <span class="flex items-center text-amber-500 font-semibold"><i data-lucide="star" class="w-3.5 h-3.5 fill-current mr-1"></i> 4.8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kuliner 6: Fresh Lime Mojito Mocktail -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-[0_4px_20px_-4px_rgba(22,125,146,0.1)] hover-lift border border-primary/5 group flex flex-col">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="images/C.jpg" alt="Fresh Mojito Dingin" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 bg-teal-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
+                            🍃 Pelepas Dahaga
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-bold text-gray-800">Fresh Lime Mint Mojito</h3>
+                                <span class="text-accent font-bold text-sm">Ultra Fresh</span>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                Minuman mocktail jeruk nipis dingin dengan remasan daun mint segar dan es kristal melimpah. Sensasi sejuk langsung menyegarkan di bawah hangatnya mentari pesisir.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+                            <span class="flex items-center"><i data-lucide="map-pin" class="w-3.5 h-3.5 mr-1 text-primary"></i> Beach Club & Lounge</span>
+                            <span class="flex items-center text-amber-500 font-semibold"><i data-lucide="star" class="w-3.5 h-3.5 fill-current mr-1"></i> 4.7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="openInWebModal('kuliner')"
+                class="mt-8 w-full md:hidden flex justify-center text-white font-semibold items-center bg-accent py-3.5 rounded-full shadow-md">
+                <i data-lucide="utensils" class="w-4 h-4 mr-2"></i> Tanya Sagara (Kuliner)
+            </button>
+        </div>
+    </section>
+
+    <!-- SECTION BARU 2: PANDUAN PERJALANAN & ITINERARY (`#panduan`) -->
+    <section id="panduan" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <span class="text-accent font-semibold uppercase tracking-wider text-sm">Panduan Rute Perjalanan Terstruktur</span>
+                    <h2 class="text-primary font-bold text-3xl md:text-4xl mt-2 mb-4">Itinerary & <span class="text-accent">Panduan Travel JLS</span></h2>
+                    <p class="text-gray-600 max-w-2xl font-medium">Susun rencana perjalanan terbaik dari Kediri menuju pesisir pantai JLS tanpa bingung. Lengkap dengan estimasi biaya, waktu terbaik, dan checklist persiapan.</p>
+                </div>
+                <button onclick="openInWebModal('panduan')"
+                    class="hidden md:flex bg-accent hover:bg-orange-500 text-white px-6 py-3 rounded-full font-semibold items-center shadow-md hover:shadow-lg transition-all">
+                    <i data-lucide="compass" class="w-4 h-4 mr-2"></i> Tanya Sagara (Konsultasi Rute)
+                </button>
+            </div>
+
+            <!-- Grid 2 Column Itinerary -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                <!-- Itinerary 1: 1 Day Healing Express -->
+                <div class="bg-base border border-primary/10 rounded-3xl p-6 md:p-8 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-primary text-white text-xs font-bold px-3 py-1.5 rounded-full">
+                                ☀️ Day Trip Express (1 Hari)
+                            </span>
+                            <span class="text-xs font-bold text-gray-500">Estimasi: ± Rp 75.000 / orang</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Healing Singkat Kediri ➔ JLS Tulungagung</h3>
+                        <p class="text-sm text-gray-600 mb-6">Cocok untuk kamu yang ingin menikmati laut dan sunset sore tanpa perlu menginap.</p>
+                        
+                        <!-- Timeline Steps -->
+                        <div class="space-y-4 border-l-2 border-primary/20 pl-4 ml-2">
+                            <div class="relative">
+                                <span class="w-3 h-3 bg-primary rounded-full absolute -left-[23px] top-1"></span>
+                                <span class="text-xs font-bold text-primary block">08.00 - 09.30 WIB</span>
+                                <p class="text-xs font-semibold text-gray-800">Berangkat dari Kediri ➔ JLS Lot 6</p>
+                                <p class="text-[11px] text-gray-500">Perjalanan aspal mulus via Ngantru & Campurdarat (± 52 km).</p>
+                            </div>
+                            <div class="relative">
+                                <span class="w-3 h-3 bg-accent rounded-full absolute -left-[23px] top-1"></span>
+                                <span class="text-xs font-bold text-accent block">10.00 - 12.30 WIB</span>
+                                <p class="text-xs font-semibold text-gray-800">Pantai Gemah & ATV Ride</p>
+                                <p class="text-[11px] text-gray-500">Bermain wahana ATV, foto tebing JLS, dan santai di bawah pinus.</p>
+                            </div>
+                            <div class="relative">
+                                <span class="w-3 h-3 bg-emerald-500 rounded-full absolute -left-[23px] top-1"></span>
+                                <span class="text-xs font-bold text-emerald-600 block">13.00 - 14.30 WIB</span>
+                                <p class="text-xs font-semibold text-gray-800">Makan Siang Seafood Bakar Rempah</p>
+                                <p class="text-[11px] text-gray-500">Santap ikan segar & es kelapa muda dingin di warung lesehan.</p>
+                            </div>
+                            <div class="relative">
+                                <span class="w-3 h-3 bg-amber-500 rounded-full absolute -left-[23px] top-1"></span>
+                                <span class="text-xs font-bold text-amber-600 block">15.30 - 17.30 WIB</span>
+                                <p class="text-xs font-semibold text-gray-800">Golden Hour Sunset di Pantai Sine / Pasur</p>
+                                <p class="text-[11px] text-gray-500">Spot terbaik mengambil swafoto sunset dengan latar tebing JLS.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-4 border-t border-gray-200/60 flex items-center justify-between">
+                        <span class="text-xs text-gray-500 font-medium">🚗 Rute 100% Aspal Mulus</span>
+                        <button onclick="openOfflineMap('gemah')"
+                            class="bg-primary hover:bg-teal-800 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-colors shadow-sm flex items-center">
+                            <i data-lucide="map" class="w-3.5 h-3.5 mr-1.5"></i> Peta Offline Rute
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Itinerary 2: 2D1N Petualangan Pantai & Homestay -->
+                <div class="bg-base border border-accent/20 rounded-3xl p-6 md:p-8 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-accent text-white text-xs font-bold px-3 py-1.5 rounded-full">
+                                ⛺ 2D1N Weekend Special (2 Hari)
+                            </span>
+                            <span class="text-xs font-bold text-gray-500">Estimasi: ± Rp 250.000 / orang</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Eksplorasi Blitar-Tulungagung & Homestay</h3>
+                        <p class="text-sm text-gray-600 mb-6">Petualangan lengkap jelajah pantai pasir putih, kuliner TPI, dan bermalam di cottage tebing.</p>
+                        
+                        <!-- Timeline Steps -->
+                        <div class="space-y-4 border-l-2 border-accent/30 pl-4 ml-2">
+                            <div class="relative">
+                                <span class="w-3 h-3 bg-accent rounded-full absolute -left-[23px] top-1"></span>
+                                <span class="text-xs font-bold text-accent block">HARI 1: Kediri ➔ Blitar Tambakrejo</span>
+                                <p class="text-xs font-semibold text-gray-800">TPI Tambakrejo & Check-in Homestay</p>
+                                <p class="text-[11px] text-gray-500">Membeli ikan segar nelayan ➔ Santap siang ➔ Check-in Villa Tebing.</p>
+                            </div>
+                            <div class="relative">
+                                <span class="w-3 h-3 bg-amber-500 rounded-full absolute -left-[23px] top-1"></span>
+                                <span class="text-xs font-bold text-amber-600 block">HARI 1: 16.00 - 21.00 WIB</span>
+                                <p class="text-xs font-semibold text-gray-800">Sunset Serang & Bonfire Malam</p>
+                                <p class="text-[11px] text-gray-500">Menikmati sunset di cemara udang & acara bakar ikan bareng bestie.</p>
+                            </div>
+                            <div class="relative">
+                                <span class="w-3 h-3 bg-teal-500 rounded-full absolute -left-[23px] top-1"></span>
+                                <span class="text-xs font-bold text-teal-600 block">HARI 2: 05.30 - 10.00 WIB</span>
+                                <p class="text-xs font-semibold text-gray-800">Sunrise Sine & Perahu Teluk</p>
+                                <p class="text-[11px] text-gray-500">Menyaksikan terbitnya matahari di samudra & sewa perahu nelayan.</p>
+                            </div>
+                            <div class="relative">
+                                <span class="w-3 h-3 bg-primary rounded-full absolute -left-[23px] top-1"></span>
+                                <span class="text-xs font-bold text-primary block">HARI 2: 13.00 - 16.00 WIB</span>
+                                <p class="text-xs font-semibold text-gray-800">Pusat Oleh-Oleh Keripik Ikan ➔ Pulang</p>
+                                <p class="text-[11px] text-gray-500">Belanja oleh-oleh camilan khas pesisir sebelum perjalanan kembali.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-4 border-t border-gray-200/60 flex items-center justify-between">
+                        <span class="text-xs text-gray-500 font-medium">🏡 Termasuk Homestay Pesisir</span>
+                        <button onclick="openOfflineMap('tambakrejo')"
+                            class="bg-accent hover:bg-orange-500 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-colors shadow-sm flex items-center">
+                            <i data-lucide="map" class="w-3.5 h-3.5 mr-1.5"></i> Peta Offline Rute
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Box Checklist Persiapan Traveling -->
+            <div class="bg-primary/5 border border-primary/10 rounded-3xl p-6 md:p-8">
+                <h4 class="font-bold text-gray-800 text-lg mb-4 flex items-center">
+                    <i data-lucide="check-square" class="w-5 h-5 mr-2 text-primary"></i> Checklist Persiapan Traveling ke JLS (Travel Tips)
+                </h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-medium text-gray-700">
+                    <div class="bg-white p-3.5 rounded-xl border border-gray-100 flex items-center space-x-2.5 shadow-sm">
+                        <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center flex-shrink-0 font-bold">1</span>
+                        <span><strong>Sunscreen & Kacamata Hitam</strong> (Cuaca pantai cukup terik siang hari)</span>
+                    </div>
+                    <div class="bg-white p-3.5 rounded-xl border border-gray-100 flex items-center space-x-2.5 shadow-sm">
+                        <span class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center flex-shrink-0 font-bold">2</span>
+                        <span><strong>Baju Ganti & Handuk</strong> (Apabila ingin bermain air/perahu)</span>
+                    </div>
+                    <div class="bg-white p-3.5 rounded-xl border border-gray-100 flex items-center space-x-2.5 shadow-sm">
+                        <span class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0 font-bold">3</span>
+                        <span><strong>Uang Cash Secukupnya</strong> (Untuk transaksi UMKM & tiket masuk)</span>
+                    </div>
+                    <div class="bg-white p-3.5 rounded-xl border border-gray-100 flex items-center space-x-2.5 shadow-sm">
+                        <span class="w-8 h-8 rounded-lg bg-pink-100 text-pink-600 flex items-center justify-center flex-shrink-0 font-bold">4</span>
+                        <span><strong>Kamera / HP Full Baterai</strong> (Banyak spot foto aesthetic JLS)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION BARU 3: PENGHUBUNG USAHA LOKAL & KEMITRAAN UMKM (`#umkm`) -->
+    <section id="umkm" class="py-20 bg-primary/[0.03] relative border-t border-primary/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <span class="text-accent font-semibold uppercase tracking-wider text-sm">Pemberdayaan Ekonomi Warga Pesisir</span>
+                    <h2 class="text-primary font-bold text-3xl md:text-4xl mt-2 mb-4">Penghubung <span class="text-accent">Usaha Lokal & UMKM</span></h2>
+                    <p class="text-gray-600 max-w-2xl font-medium">Sagara mendukung penuh usaha warga lokal pesisir. Hubungi warung, persewaan wahana, hingga pusat oleh-oleh khas langsung dari platform ini.</p>
+                </div>
+                <button onclick="openInWebModal('mitra')"
+                    class="hidden md:flex bg-accent hover:bg-orange-500 text-white px-6 py-3 rounded-full font-semibold items-center shadow-md hover:shadow-lg transition-all">
+                    <i data-lucide="handshake" class="w-4 h-4 mr-2"></i> Daftarkan Usaha Kamu
+                </button>
+            </div>
+
+            <!-- Spotlight UMKM Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <!-- UMKM 1: Warung Seafood Mba Sri -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm hover-lift border border-primary/10 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] font-bold bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full inline-block mb-3">
+                            🐟 Sentra Seafood Fresh
+                        </span>
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Warung Ikan Bakar Mba Sri</h3>
+                        <p class="text-xs text-primary font-medium mb-3">📍 Tepi Pantai Sine Tulungagung</p>
+                        <p class="text-xs text-gray-600 leading-relaxed mb-4">Spesialis olahan ikan gurami & kakap bakar bumbu rempah pedas manis khas pesisir disajikan lesehan.</p>
+                    </div>
+                    <button onclick="openInWebModal('kuliner')"
+                        class="w-full bg-primary/10 hover:bg-primary/20 text-primary text-xs font-bold py-2.5 rounded-xl transition-colors flex items-center justify-center">
+                        <i data-lucide="utensils" class="w-3.5 h-3.5 mr-1.5"></i> Tanya Menu & Tempat
+                    </button>
+                </div>
+
+                <!-- UMKM 2: Persewaan ATV & Perahu -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm hover-lift border border-primary/10 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full inline-block mb-3">
+                            🚜 Wahana & Rekreasi
+                        </span>
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Rental ATV & Perahu Gemah</h3>
+                        <p class="text-xs text-primary font-medium mb-3">📍 Pantai Gemah JLS Lot 6</p>
+                        <p class="text-xs text-gray-600 leading-relaxed mb-4">Persewaan unit ATV 150cc, perahu keliling teluk, dan wahana banana boat aman bersertifikat pengawas.</p>
+                    </div>
+                    <button onclick="openInWebModal('umum')"
+                        class="w-full bg-primary/10 hover:bg-primary/20 text-primary text-xs font-bold py-2.5 rounded-xl transition-colors flex items-center justify-center">
+                        <i data-lucide="compass" class="w-3.5 h-3.5 mr-1.5"></i> Info Sewa Wahana
+                    </button>
+                </div>
+
+                <!-- UMKM 3: Oleh-Oleh Sagara Rasa -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm hover-lift border border-primary/10 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] font-bold bg-pink-100 text-pink-800 px-2.5 py-1 rounded-full inline-block mb-3">
+                            🦑 Oleh-Oleh Khas Pesisir
+                        </span>
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Oleh-Oleh "Sagara Rasa"</h3>
+                        <p class="text-xs text-primary font-medium mb-3">📍 Kademangan & Tambakrejo</p>
+                        <p class="text-xs text-gray-600 leading-relaxed mb-4">Produsen keripik ikan laut crispy, cumi tepung gurih, terasi udang asli, dan manisan buah tropis.</p>
+                    </div>
+                    <button onclick="openInWebModal('umum')"
+                        class="w-full bg-primary/10 hover:bg-primary/20 text-primary text-xs font-bold py-2.5 rounded-xl transition-colors flex items-center justify-center">
+                        <i data-lucide="shopping-bag" class="w-3.5 h-3.5 mr-1.5"></i> Cek Produk Camilan
+                    </button>
+                </div>
+
+                <!-- UMKM 4: Travel & Charter Kediri-JLS -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm hover-lift border border-primary/10 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] font-bold bg-blue-100 text-blue-800 px-2.5 py-1 rounded-full inline-block mb-3">
+                            🚗 Transportasi Lokal
+                        </span>
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Jasa Charter Kediri - JLS</h3>
+                        <p class="text-xs text-primary font-medium mb-3">📍 Kediri & Tulungagung</p>
+                        <p class="text-xs text-gray-600 leading-relaxed mb-4">Layanan sewa mobil Avanza/Hiace lengkap driver berpengalaman yang paham seluk-beluk spot rahasia JLS.</p>
+                    </div>
+                    <button onclick="openInWebModal('rute')"
+                        class="w-full bg-primary/10 hover:bg-primary/20 text-primary text-xs font-bold py-2.5 rounded-xl transition-colors flex items-center justify-center">
+                        <i data-lucide="car" class="w-3.5 h-3.5 mr-1.5"></i> Tanya Layanan Travel
+                    </button>
+                </div>
+            </div>
+
+            <!-- Banner Daftarkan UMKM Gratis -->
+            <div class="bg-gradient-to-r from-primary to-teal-800 rounded-3xl p-8 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl border border-white/20">
+                <div class="text-center md:text-left">
+                    <span class="bg-accent text-white text-xs font-bold px-3 py-1 rounded-full inline-block mb-2">🤝 Program Kemitraan UMKM Sagara</span>
+                    <h3 class="text-2xl md:text-3xl font-bold mb-2">Punya Usaha Warung, Homestay, atau Wahana di JLS?</h3>
+                    <p class="text-white/80 text-sm max-w-xl">Daftarkan usaha kamu secara <strong>100% GRATIS</strong> di website Sagara agar mudah ditemukan ribuan wisatawan asal Kediri dan sekitarnya!</p>
+                </div>
+                <button onclick="openInWebModal('mitra')"
+                    class="w-full md:w-auto flex-shrink-0 bg-accent hover:bg-orange-500 text-white font-bold px-8 py-4 rounded-full text-base transition-transform hover:scale-105 shadow-lg flex items-center justify-center">
+                    <i data-lucide="plus-circle" class="w-5 h-5 mr-2"></i> Daftarkan Usaha Kamu
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: ULASAN PELANGGAN (Social Proof) -->
+    <section id="ulasan" class="py-20 relative overflow-hidden">
+        <!-- Dekorasi Background -->
+        <div
+            class="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -z-10 transform translate-x-1/2 -translate-y-1/2">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl -z-10 transform -translate-x-1/2 translate-y-1/2">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-accent font-semibold uppercase tracking-wider text-sm">Kata Mereka</span>
+                <h2 class="text-primary font-bold text-3xl md:text-4xl mt-2 mb-4">Pengalaman Bersama Sagara</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Review 1 -->
+                <div onclick="openInWebModal('umum')"
+                    class="bg-white rounded-[2rem] p-8 md:p-10 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)] relative cursor-pointer hover:shadow-xl transition-all border border-primary/5">
+                    <i data-lucide="quote" class="absolute top-8 right-8 w-12 h-12 text-primary/10"></i>
+                    <div class="flex items-center mb-6">
+                        <div
+                            class="w-14 h-14 bg-gradient-to-tr from-primary to-accent rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">
+                            I
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-lg">Indrok</h4>
+                            <p class="text-sm text-gray-500">Pengendara di jalur JLS Pantai Sine-Pasur</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-lg italic leading-relaxed">
+                        "Indah sekali bisa lihat pantai dari jalur lintas selatan, kayaknya ini salah satu jalur JLS
+                        yang paling indah pemandangannya."
+                    </p>
+                    <div class="flex text-accent mt-4">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div onclick="openInWebModal('umum')"
+                    class="bg-white rounded-[2rem] p-8 md:p-10 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)] relative cursor-pointer hover:shadow-xl transition-all border border-primary/5">
+                    <i data-lucide="quote" class="absolute top-8 right-8 w-12 h-12 text-primary/10"></i>
+                    <div class="flex items-center mb-6">
+                        <div
+                            class="w-14 h-14 bg-gradient-to-tr from-accent to-orange-400 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">
+                            K
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-lg">Kanzull</h4>
+                            <p class="text-sm text-gray-500">Pengunjung Lokal Jawa Timur</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-lg italic leading-relaxed">
+                        "Jalur Lintas Selatan Lot 6A ini menyajikan keindahan alam yang sungguh luar biasa indahnya,
+                        terutama laut selatan Jawa dan pegunungannya. Aksesnya mulus, ramai, dan pas banget buat
+                        swafoto!"
+                    </p>
+                    <div class="flex text-accent mt-4">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: PERTANYAAN YANG SERING DIAJUKAN (FAQ) -->
+    <section id="faq" class="py-20 md:py-28 bg-white relative border-t border-gray-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14">
+                <span class="text-accent font-semibold uppercase tracking-wider text-sm">❓ FAQ & Panduan</span>
+                <h2 class="text-primary font-bold text-3xl md:text-4xl mt-2 mb-4">Pertanyaan Yang <span class="text-accent">Sering Diajukan</span></h2>
+                <div class="w-24 h-1 bg-accent mx-auto rounded-full mb-4"></div>
+                <p class="faq-subtitle-text text-slate-800 font-semibold max-w-xl mx-auto text-base md:text-lg leading-relaxed">Punya pertanyaan seputar perjalanan di Jalur Lintas Selatan (JLS)? Temukan jawaban cepat di bawah ini atau langsung konsultasi ke Sagara!</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div id="faq-1" class="faq-item bg-white border border-gray-200 rounded-2xl p-5 md:p-6 transition-all duration-300 shadow-sm hover:shadow-md">
+                    <button onclick="toggleFAQ('faq-1')" class="w-full flex items-center justify-between text-left focus:outline-none group">
+                        <span class="faq-title-text font-bold text-slate-900 text-base md:text-lg group-hover:text-primary transition-colors flex items-center pr-4">
+                            <i data-lucide="help-circle" class="w-5 h-5 text-accent mr-3 flex-shrink-0"></i>
+                            Berapa jam perjalanan dari Kota Kediri menuju Jalur Lintas Selatan (JLS)?
+                        </span>
+                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer hidden pt-4 text-gray-600 text-sm md:text-base leading-relaxed border-t border-gray-100 mt-4">
+                        Perjalanan dari Kota Kediri menuju Jalur Lintas Selatan (seperti Pantai Gemah atau Sine) memakan waktu sekitar <strong>1.5 hingga 2 jam</strong> berkendara. Rutenya sangat nyaman dengan jalan full aspal mulus via Tulungagung maupun Blitar.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div id="faq-2" class="faq-item bg-white border border-gray-200 rounded-2xl p-5 md:p-6 transition-all duration-300 shadow-sm hover:shadow-md">
+                    <button onclick="toggleFAQ('faq-2')" class="w-full flex items-center justify-between text-left focus:outline-none group">
+                        <span class="faq-title-text font-bold text-slate-900 text-base md:text-lg group-hover:text-primary transition-colors flex items-center pr-4">
+                            <i data-lucide="car" class="w-5 h-5 text-accent mr-3 flex-shrink-0"></i>
+                            Apakah rute JLS bisa dilalui mobil pribadi dan bus pariwisata?
+                        </span>
+                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer hidden pt-4 text-gray-600 text-sm md:text-base leading-relaxed border-t border-gray-100 mt-4">
+                        <strong>Sangat Bisa!</strong> Infrastruktur Jalur Lintas Selatan (JLS Lot 6A) dirancang lebar, mulus, dan landai. Mobil pribadi, rombongan motor, hingga bus pariwisata ukuran besar dapat melintas dengan sangat lancar dan aman.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div id="faq-3" class="faq-item bg-white border border-gray-200 rounded-2xl p-5 md:p-6 transition-all duration-300 shadow-sm hover:shadow-md">
+                    <button onclick="toggleFAQ('faq-3')" class="w-full flex items-center justify-between text-left focus:outline-none group">
+                        <span class="faq-title-text font-bold text-slate-900 text-base md:text-lg group-hover:text-primary transition-colors flex items-center pr-4">
+                            <i data-lucide="sunset" class="w-5 h-5 text-accent mr-3 flex-shrink-0"></i>
+                            Kapan waktu terbaik (best time) untuk berkunjung ke JLS?
+                        </span>
+                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer hidden pt-4 text-gray-600 text-sm md:text-base leading-relaxed border-t border-gray-100 mt-4">
+                        Waktu paling ideal adalah pukul <strong>14.30 – 17.30 WIB</strong>. Selain cuaca tidak terlalu panas, Anda bisa menikmati momen langit sore bernuansa kejingaan magis (*golden hour sunset*) di tebing panorama JLS maupun di pinggir pantai.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div id="faq-4" class="faq-item bg-white border border-gray-200 rounded-2xl p-5 md:p-6 transition-all duration-300 shadow-sm hover:shadow-md">
+                    <button onclick="toggleFAQ('faq-4')" class="w-full flex items-center justify-between text-left focus:outline-none group">
+                        <span class="faq-title-text font-bold text-slate-900 text-base md:text-lg group-hover:text-primary transition-colors flex items-center pr-4">
+                            <i data-lucide="ticket" class="w-5 h-5 text-accent mr-3 flex-shrink-0"></i>
+                            Apakah ada biaya tiket masuk (HTM) untuk menikmati view JLS?
+                        </span>
+                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer hidden pt-4 text-gray-600 text-sm md:text-base leading-relaxed border-t border-gray-100 mt-4">
+                        Untuk melintas dan berfoto di spot pinggir tebing JLS <strong>tidak dikenakan biaya tiket (gratis)</strong>. Tiket masuk (HTM) hanya berlaku jika Anda memasuki gerbang wisata pantai khusus (seperti Pantai Gemah atau Tambakrejo) dengan kisaran HTM terjangkau Rp 5.000 - Rp 10.000/orang.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div id="faq-5" class="faq-item bg-white border border-gray-200 rounded-2xl p-5 md:p-6 transition-all duration-300 shadow-sm hover:shadow-md">
+                    <button onclick="toggleFAQ('faq-5')" class="w-full flex items-center justify-between text-left focus:outline-none group">
+                        <span class="faq-title-text font-bold text-slate-900 text-base md:text-lg group-hover:text-primary transition-colors flex items-center pr-4">
+                            <i data-lucide="utensils-crossed" class="w-5 h-5 text-accent mr-3 flex-shrink-0"></i>
+                            Fasilitas apa saja yang tersedia di sepanjang pesisir JLS?
+                        </span>
+                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer hidden pt-4 text-gray-600 text-sm md:text-base leading-relaxed border-t border-gray-100 mt-4">
+                        Fasilitas sangat lengkap! Tersedia wahana ATV, perahu sewa, puluhan resto & warung lesehan ikan bakar segar, cafe tebing kekinian, es kelapa sunset, mushola umum, area parkir luas, dan toilet bersih.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div id="faq-6" class="faq-item bg-white border border-gray-200 rounded-2xl p-5 md:p-6 transition-all duration-300 shadow-sm hover:shadow-md">
+                    <button onclick="toggleFAQ('faq-6')" class="w-full flex items-center justify-between text-left focus:outline-none group">
+                        <span class="faq-title-text font-bold text-slate-900 text-base md:text-lg group-hover:text-primary transition-colors flex items-center pr-4">
+                            <i data-lucide="message-square-plus" class="w-5 h-5 text-accent mr-3 flex-shrink-0"></i>
+                            Bagaimana cara bertanya rute khusus atau konsultasi wisata di Sagara?
+                        </span>
+                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer hidden pt-4 text-gray-600 text-sm md:text-base leading-relaxed border-t border-gray-100 mt-4">
+                        Sangat mudah! Anda bisa mengklik tombol <strong>Tanya Sagara</strong> atau tombol melayang di kanan bawah layar. Anda bisa berkonsultasi mengenai rute, kuliner, maupun spot foto secara gratis langsung di web ini.
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Box di Bawah FAQ -->
+            <div class="mt-10 text-center bg-primary/5 border border-primary/10 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="text-left">
+                    <h4 class="font-bold text-gray-800 text-base">Masih punya pertanyaan lain seputar JLS?</h4>
+                    <p class="text-gray-600 text-xs md:text-sm">Konsultasikan langsung dengan Sagara secara gratis di dalam website.</p>
+                </div>
+                <button onclick="openInWebModal('umum')"
+                    class="bg-accent hover:bg-orange-500 text-white font-bold text-xs md:text-sm px-6 py-3 rounded-xl transition-all shadow-md flex items-center flex-shrink-0">
+                    <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i> Tanya Sagara Sekarang
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER & CTA FINAL -->
+    <footer id="kontak" class="bg-primary text-white pt-16 pb-10 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -z-0"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Big CTA Box -->
+            <div
+                class="bg-white rounded-3xl p-8 md:p-12 shadow-2xl mb-16 text-center md:text-left flex flex-col md:flex-row items-center justify-between border-b-4 border-accent">
+                <div class="mb-6 md:mb-0 md:mr-8">
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Sudah Mupeng Pengen Healing?</h3>
+                    <p class="text-gray-600">Jangan ditunda! Konsultasikan rencana perjalananmu dan dapatkan rute
+                        terbaik langsung di web ini.</p>
+                </div>
+                <button onclick="openInWebModal('umum')"
+                    class="w-full md:w-auto flex-shrink-0 bg-accent hover:bg-orange-500 text-white px-8 py-4 rounded-full font-bold text-lg transition-transform hover:scale-105 flex items-center justify-center shadow-lg">
+                    <i data-lucide="message-square" class="mr-2"></i> Tanya Sagara
+                </button>
+            </div>
+
+            <!-- Footer Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-12">
+                <!-- Branding -->
+                <div class="md:col-span-5">
+                    <div class="inline-flex items-center bg-white/95 backdrop-blur-sm px-4 py-2 rounded-2xl shadow-md mb-4 cursor-pointer hover:bg-white transition-all group" onclick="window.scrollTo(0,0)">
+                        <img src="images/logo.png" alt="Sagara Logo" class="h-10 md:h-12 w-auto object-contain mr-2.5 transition-transform group-hover:scale-105" />
+                        <span class="font-bold text-2xl text-primary tracking-tight">Sagara</span>
+                    </div>
+                    <p class="text-white/70 mb-6 leading-relaxed">
+                        Platform panduan wisata dan rute terbaik untuk menikmati pesona alam pesisir di sepanjang Jalur
+                        Lintas Selatan dari Kediri.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="md:col-span-3">
+                    <h4 class="font-bold text-lg mb-4 border-b border-white/20 pb-2 inline-block">Navigasi</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#hero" class="text-white/70 hover:text-accent transition-colors">Beranda</a></li>
+                        <li><a href="#keunggulan"
+                                class="text-white/70 hover:text-accent transition-colors">Keunggulan</a></li>
+                        <li><a href="#pantai"
+                                class="text-white/70 hover:text-accent transition-colors">Destinasi Pantai</a></li>
+                        <li><a href="#galeri" class="text-white/70 hover:text-accent transition-colors">Galeri Vibe</a>
+                        </li>
+                        <li><a href="#kuliner" class="text-white/70 hover:text-accent transition-colors">Kuliner Pesisir</a>
+                        </li>
+                        <li><a href="#ulasan" class="text-white/70 hover:text-accent transition-colors">Ulasan</a></li>
+                        <li><a href="#faq" class="text-white/70 hover:text-accent transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kontak -->
+                <div class="md:col-span-4">
+                    <h4 class="font-bold text-lg mb-4 border-b border-white/20 pb-2 inline-block">Hubungi Kami</h4>
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="https://wa.me/6285783670166?text=Halo%20Sagara!%20%F0%9F%8C%8A%20Saya%20baru%20cek%20websitenya%20dan%20tertarik%20pengen%20healing%20ke%20pantai%20JLS.%20Spill%20info%20lengkapnya%20dong!%20%E2%9C%A8"
+                                target="_blank" rel="noopener noreferrer"
+                                class="flex items-start text-white/70 hover:text-accent transition-colors group text-left w-full">
+                                <i data-lucide="message-circle" class="w-5 h-5 mr-3 mt-0.5 group-hover:scale-110 flex-shrink-0 text-emerald-400"></i>
+                                <div>
+                                    <p class="font-medium text-white group-hover:text-accent transition-colors">WhatsApp Direct</p>
+                                    <p class="text-sm">0857-8367-0166 (Klik untuk Chat WA)</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://instagram.com/njwaa.akm" target="_blank" rel="noopener noreferrer"
+                                class="flex items-start text-white/70 hover:text-accent transition-colors group">
+                                <i data-lucide="instagram" class="w-5 h-5 mr-3 mt-0.5 flex-shrink-0 group-hover:scale-110 text-pink-400"></i>
+                                <div>
+                                    <p class="font-medium text-white group-hover:text-accent transition-colors">Instagram Official</p>
+                                    <p class="text-sm">@njwaa.akm (Klik untuk Buka IG)</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=najwamisyk@gmail.com&su=Konsultasi%20Wisata%20Sagara" target="_blank" rel="noopener noreferrer"
+                                class="flex items-start text-white/70 hover:text-accent transition-colors group">
+                                <i data-lucide="mail" class="w-5 h-5 mr-3 mt-0.5 flex-shrink-0 group-hover:scale-110 text-amber-400"></i>
+                                <div>
+                                    <p class="font-medium text-white group-hover:text-accent transition-colors">Gmail / Email</p>
+                                    <p class="text-sm">najwamisyk@gmail.com (Klik untuk Kirim Email)</p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div
+                class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-white/50 text-sm">
+                <p>&copy; 2026 Tim SMK Al-Mahrusiyah Lirboyo. All rights reserved.</p>
+                <p class="mt-2 md:mt-0">Proyek Landing Page - Sagara</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ======================================================
+         MODAL INTERAKTIF IN-WEBSITE (TANPA REDIRECT KE WA)
+    ====================================================== -->
+    <div id="inweb-modal"
+        class="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 transition-all duration-300 opacity-0 pointer-events-none hidden">
+        
+        <div class="modal-content bg-white rounded-3xl max-w-2xl w-full p-6 md:p-8 shadow-2xl relative transform scale-95 transition-all duration-300 max-h-[90vh] overflow-y-auto border border-primary/10">
+            
+            <!-- Tombol Close Modal -->
+            <button onclick="closeInWebModal()"
+                class="absolute top-5 right-5 w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 flex items-center justify-center transition-colors focus:outline-none"
+                aria-label="Tutup Modal">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <!-- Modal Header -->
+            <div onclick="switchModalTab('form')" class="flex items-center space-x-3 mb-6 cursor-pointer group">
+                <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 p-1.5 border border-primary/20 group-hover:scale-105 transition-transform">
+                    <img src="images/logo.png" alt="Sagara Logo" class="w-full h-full object-contain" />
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 tracking-tight group-hover:text-primary transition-colors">Konsultasi Sagara</h3>
+                    <p class="text-sm text-gray-500 font-medium">Layanan Informasi & Pertanyaan Langsung di Web</p>
+                </div>
+            </div>
+
+            <!-- Modal Tabs Navigasi -->
+            <div class="flex space-x-2 bg-gray-50 p-1.5 rounded-2xl mb-6 border border-gray-100">
+                <button id="tab-btn-form" onclick="switchModalTab('form')"
+                    class="flex-1 py-2.5 px-3 md:px-4 rounded-xl text-xs md:text-sm font-semibold transition-all flex items-center justify-center bg-primary text-white shadow-sm">
+                    <i data-lucide="send" class="w-4 h-4 mr-1.5"></i> Kirim Pesan
+                </button>
+                <button id="tab-btn-rute" onclick="switchModalTab('rute')"
+                    class="flex-1 py-2.5 px-3 md:px-4 rounded-xl text-xs md:text-sm font-semibold transition-all flex items-center justify-center bg-gray-100 text-gray-600 hover:bg-gray-200">
+                    <i data-lucide="map" class="w-4 h-4 mr-1.5"></i> Info Rute Instan
+                </button>
+                <button id="tab-btn-kontak" onclick="switchModalTab('kontak')"
+                    class="flex-1 py-2.5 px-3 md:px-4 rounded-xl text-xs md:text-sm font-semibold transition-all flex items-center justify-center bg-gray-100 text-gray-600 hover:bg-gray-200">
+                    <i data-lucide="phone-call" class="w-4 h-4 mr-1.5"></i> Kontak Direct
+                </button>
+            </div>
+
+            <!-- TAB CONTENT 1: FORM KONSULTASI IN-WEBSITE -->
+            <div id="tab-content-form" class="space-y-4">
+                <form onsubmit="submitInWebForm(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1">Nama Lengkap / Panggilan</label>
+                        <input type="text" id="modal-name" required placeholder="Contoh: Budi Cahyono"
+                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1">Topik Pertanyaan</label>
+                        <select id="modal-topic"
+                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm bg-white font-medium text-gray-800">
+                            <option value="umum">✨ General / Konsultasi Healing JLS</option>
+                            <option value="homestay">🏠 Booking & Info Homestay / Penginapan Pesisir</option>
+                            <option value="kuliner">🐟 Rekomendasi Seafood & Sentra UMKM Kuliner</option>
+                            <option value="panduan">🧭 Panduan Itinerary & Rute Perjalanan</option>
+                            <option value="rute">📍 Panduan Rute & Akses Jalan dari Kediri</option>
+                            <option value="spot">📸 Spot Swafoto Aesthetic & Point Sunset</option>
+                            <option value="mitra">🤝 Pendaftaran Kemitraan Usaha Lokal (UMKM)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1">Pesan / Pertanyaan Kamu</label>
+                        <textarea id="modal-message" rows="4" required
+                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm"
+                            placeholder="Tuliskan pertanyaan kamu di sini..."></textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-accent hover:bg-orange-500 text-white py-3.5 px-6 rounded-xl font-bold text-base transition-all shadow-md hover:shadow-lg flex items-center justify-center">
+                        <i data-lucide="send" class="w-5 h-5 mr-2"></i> Kirim Pesan di Web
+                    </button>
+                </form>
+            </div>
+
+            <!-- VIEW BERHASIL (SUCCESS VIEW AFTER FORM SUBMISSION) -->
+            <div id="modal-success-view" class="hidden text-center py-6 space-y-4">
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <i data-lucide="check-circle-2" class="w-10 h-10"></i>
+                </div>
+                <h4 class="text-2xl font-bold text-gray-800">Pesan Terkirim di Web! 🎉</h4>
+                <p class="text-gray-600 text-sm max-w-md mx-auto">
+                    Terima kasih <strong id="success-user-name" class="text-primary"></strong>! Pesan kamu sudah tersimpan di sistem layanan web Explore JLS.
+                </p>
+                
+                <div id="success-topic-info" class="bg-primary/5 border border-primary/10 rounded-2xl p-4 text-left text-xs md:text-sm text-gray-700 space-y-2">
+                    <!-- Info snippet auto-generated by JS -->
+                </div>
+
+                <div class="pt-4 flex justify-center space-x-3">
+                    <button onclick="resetModalForm()"
+                        class="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-semibold transition-colors">
+                        Kirim Pesan Lain
+                    </button>
+                    <button onclick="closeInWebModal()"
+                        class="px-5 py-2.5 bg-primary text-white hover:bg-teal-700 rounded-xl text-sm font-semibold transition-colors">
+                        Tutup Modal
+                    </button>
+                </div>
+            </div>
+
+            <!-- TAB CONTENT 2: PANDUAN RUTE INSTAN -->
+            <div id="tab-content-rute" class="hidden space-y-4 text-sm text-gray-700">
+                <div class="bg-primary/5 p-4 rounded-2xl border border-primary/10">
+                    <h4 class="font-bold text-primary text-base mb-2 flex items-center">
+                        <i data-lucide="navigation" class="w-5 h-5 mr-2"></i> Panduan Rute Utama dari Kediri
+                    </h4>
+                    <p class="leading-relaxed">
+                        Perjalanan dari Kota Kediri menuju Jalur Lintas Selatan (JLS Lot 6A / Pantai Sine-Pasur) memakan waktu sekitar <strong>1.5 - 2 jam</strong> dengan jalan mulus dan teraspal sempurna.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="border border-gray-100 bg-white p-3.5 rounded-xl shadow-sm">
+                        <span class="font-bold text-accent text-xs block mb-1">RUTE A (VIA TULUNGAGUNG)</span>
+                        <p class="text-xs text-gray-600">Kediri ➔ Tulungagung ➔ Campurdarat ➔ Jalur Lintas Selatan Pantai Sine.</p>
+                    </div>
+                    <div class="border border-gray-100 bg-white p-3.5 rounded-xl shadow-sm">
+                        <span class="font-bold text-accent text-xs block mb-1">RUTE B (VIA BLITAR)</span>
+                        <p class="text-xs text-gray-600">Kediri ➔ Blitar ➔ Kademangan ➔ Jalur Lintas Selatan Pantai Pasur.</p>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50 border border-amber-200 text-amber-800 p-3.5 rounded-xl text-xs flex items-start">
+                    <i data-lucide="info" class="w-5 h-5 mr-2 flex-shrink-0 text-amber-600 mt-0.5"></i>
+                    <span><strong>Tips Healing:</strong> Berangkatlah pada pukul 14.00 WIB agar tiba di JLS tepat saat langit sore bernuansa golden hour dan sunset!</span>
+                </div>
+            </div>
+
+            <!-- TAB CONTENT 3: KONTAK DIRECT IN-WEBSITE -->
+            <div id="tab-content-kontak" class="hidden space-y-4">
+                <div class="space-y-3">
+                    <!-- WhatsApp -->
+                    <div class="flex items-center justify-between p-3.5 bg-emerald-50/50 border border-emerald-100 rounded-2xl">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="message-circle" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 font-medium">WhatsApp Direct</p>
+                                <p class="font-bold text-gray-800 text-sm">0857-8367-0166</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-1.5">
+                            <a href="https://wa.me/6285783670166?text=Halo%20Sagara!%20%F0%9F%8C%8A%20Saya%20mau%20tanya%20info%20wisata%20pantai%20JLS" target="_blank" rel="noopener noreferrer"
+                                class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold transition-colors shadow-sm flex items-center">
+                                <i data-lucide="external-link" class="w-3.5 h-3.5 inline mr-1"></i> WA
+                            </a>
+                            <button onclick="copyContactText('085783670166', this)"
+                                class="px-2.5 py-1.5 bg-white border border-gray-200 hover:bg-gray-100 rounded-lg text-xs font-semibold text-gray-700 transition-colors shadow-sm">
+                                Salin
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Gmail / Email -->
+                    <div class="flex items-center justify-between p-3.5 bg-blue-50/50 border border-blue-100 rounded-2xl">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 font-medium">Gmail / Email</p>
+                                <p class="font-bold text-gray-800 text-sm">najwamisyk@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-1.5">
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=najwamisyk@gmail.com&su=Konsultasi%20Wisata%20Sagara" target="_blank" rel="noopener noreferrer"
+                                class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold transition-colors shadow-sm flex items-center">
+                                <i data-lucide="external-link" class="w-3.5 h-3.5 inline mr-1"></i> Gmail
+                            </a>
+                            <button onclick="copyContactText('najwamisyk@gmail.com', this)"
+                                class="px-2.5 py-1.5 bg-white border border-gray-200 hover:bg-gray-100 rounded-lg text-xs font-semibold text-gray-700 transition-colors shadow-sm">
+                                Salin
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Instagram -->
+                    <div class="flex items-center justify-between p-3.5 bg-pink-50/50 border border-pink-100 rounded-2xl">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="instagram" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 font-medium">Instagram Official</p>
+                                <p class="font-bold text-gray-800 text-sm">@njwaa.akm</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-1.5">
+                            <a href="https://instagram.com/njwaa.akm" target="_blank" rel="noopener noreferrer"
+                                class="px-3 py-1.5 bg-pink-600 hover:bg-pink-700 text-white rounded-lg text-xs font-semibold transition-colors shadow-sm flex items-center">
+                                <i data-lucide="external-link" class="w-3.5 h-3.5 inline mr-1"></i> IG
+                            </a>
+                            <button onclick="copyContactText('@njwaa.akm', this)"
+                                class="px-2.5 py-1.5 bg-white border border-gray-200 hover:bg-gray-100 rounded-lg text-xs font-semibold text-gray-700 transition-colors shadow-sm">
+                                Salin
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ======================================================
+         MODAL PETA & RUTE SAGARA 100% OFFLINE
+    ====================================================== -->
+    <div id="offline-map-modal"
+        class="fixed inset-0 z-[110] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 transition-all duration-300 opacity-0 pointer-events-none hidden"
+        onclick="closeOfflineMap()">
+        
+        <div class="map-modal-content bg-white rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl relative transform scale-95 transition-all duration-300 max-h-[90vh] flex flex-col border border-primary/10"
+            onclick="event.stopPropagation()">
+            
+            <!-- Header Modal Peta Offline -->
+            <div class="p-5 md:p-6 bg-gradient-to-r from-primary to-teal-800 text-white flex items-center justify-between relative">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center backdrop-blur-md border border-white/20">
+                        <i data-lucide="map" class="w-5 h-5 text-accent"></i>
+                    </div>
+                    <div>
+                        <span id="map-modal-region" class="text-xs text-accent font-bold tracking-wider uppercase">📍 Tulungagung • JLS Lot 6</span>
+                        <h3 id="map-modal-title" class="text-xl md:text-2xl font-bold text-white tracking-tight">Pantai Gemah Tulungagung</h3>
+                    </div>
+                </div>
+                <button onclick="closeOfflineMap()"
+                    class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors focus:outline-none backdrop-blur-sm"
+                    aria-label="Tutup Peta">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Body Modal Scrollable -->
+            <div class="p-6 overflow-y-auto space-y-6">
+                
+                <!-- SVG Diagram Peta Visual Offline JLS -->
+                <div class="bg-slate-900 rounded-2xl p-4 text-white relative overflow-hidden border border-slate-700 shadow-inner">
+                    <div class="flex items-center justify-between mb-3 border-b border-slate-800 pb-2">
+                        <span class="text-xs font-bold text-teal-400 flex items-center">
+                            <i data-lucide="wifi-off" class="w-3.5 h-3.5 mr-1.5 text-accent"></i> Peta Navigasi Visual Offline Sagara (Tanpa Internet)
+                        </span>
+                        <span id="map-modal-coords" class="text-[11px] font-mono bg-slate-800 text-slate-300 px-2 py-0.5 rounded border border-slate-700">-8.2415, 111.8312</span>
+                    </div>
+
+                    <!-- SVG Vector Route Map Diagram -->
+                    <div class="w-full h-44 sm:h-52 bg-slate-950 rounded-xl relative overflow-hidden flex items-center justify-center border border-slate-800">
+                        <svg class="w-full h-full" viewBox="0 0 600 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background Grid -->
+                            <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+                                <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+                            </pattern>
+                            <rect width="600" height="240" fill="url(#grid)" />
+
+                            <!-- Ocean Area -->
+                            <path d="M 0 160 Q 200 170, 400 150 T 600 175 L 600 240 L 0 240 Z" fill="#0f4c5c" opacity="0.3"/>
+                            <text x="500" y="210" fill="#38bdf8" font-size="11" font-weight="bold" opacity="0.7">SAMUDRA HINDIA</text>
+
+                            <!-- Kediri Main Hub Node -->
+                            <circle cx="80" cy="50" r="10" fill="#f4a261" />
+                            <text x="80" y="30" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">📍 KOTA KEDIRI</text>
+                            <text x="80" y="73" fill="#cbd5e1" font-size="9" text-anchor="middle">(Keberangkatan)</text>
+
+                            <!-- Route Line Kediri -> Tulungagung / Blitar -->
+                            <path d="M 80 50 L 220 110" stroke="#f4a261" stroke-width="4" stroke-dasharray="6 4"/>
+                            <path d="M 80 50 L 380 90" stroke="#38bdf8" stroke-width="3" stroke-dasharray="6 4"/>
+
+                            <!-- JLS Coastline Highway (Aspal Mulus) -->
+                            <path d="M 180 140 Q 300 130, 520 145" stroke="#2dd4bf" stroke-width="6" stroke-linecap="round"/>
+                            <text x="350" y="125" fill="#2dd4bf" font-size="11" font-weight="bold" text-anchor="middle">🛣️ JALUR LINTAS SELATAN (JLS LOT 6 - FULL ASPAL MULUS)</text>
+
+                            <!-- Junction Tulungagung -->
+                            <circle cx="220" cy="110" r="7" fill="#167d92" />
+                            <text x="210" y="95" fill="#94a3b8" font-size="10" font-weight="bold">Tulungagung</text>
+
+                            <!-- Junction Blitar -->
+                            <circle cx="380" cy="90" r="7" fill="#167d92" />
+                            <text x="390" y="80" fill="#94a3b8" font-size="10" font-weight="bold">Blitar</text>
+
+                            <!-- Pins Destinasi Pantai -->
+                            <!-- Gemah -->
+                            <g class="cursor-pointer hover:scale-125 transition-transform" onclick="openOfflineMap('gemah')">
+                                <circle cx="240" cy="155" r="9" fill="#f4a261" stroke="#ffffff" stroke-width="2"/>
+                                <text x="240" y="180" fill="#f4a261" font-size="10" font-weight="bold" text-anchor="middle">Pantai Gemah</text>
+                            </g>
+                            <!-- Sine -->
+                            <g class="cursor-pointer hover:scale-125 transition-transform" onclick="openOfflineMap('sine')">
+                                <circle cx="310" cy="150" r="7" fill="#2dd4bf" stroke="#ffffff" stroke-width="2"/>
+                                <text x="310" y="175" fill="#e2e8f0" font-size="9" font-weight="bold" text-anchor="middle">Sine</text>
+                            </g>
+                            <!-- Pasur -->
+                            <g class="cursor-pointer hover:scale-125 transition-transform" onclick="openOfflineMap('pasur')">
+                                <circle cx="370" cy="152" r="7" fill="#2dd4bf" stroke="#ffffff" stroke-width="2"/>
+                                <text x="370" y="175" fill="#e2e8f0" font-size="9" font-weight="bold" text-anchor="middle">Pasur</text>
+                            </g>
+                            <!-- Tambakrejo -->
+                            <g class="cursor-pointer hover:scale-125 transition-transform" onclick="openOfflineMap('tambakrejo')">
+                                <circle cx="440" cy="148" r="8" fill="#f4a261" stroke="#ffffff" stroke-width="2"/>
+                                <text x="440" y="175" fill="#f4a261" font-size="9" font-weight="bold" text-anchor="middle">Tambakrejo</text>
+                            </g>
+                            <!-- Serang -->
+                            <g class="cursor-pointer hover:scale-125 transition-transform" onclick="openOfflineMap('serang')">
+                                <circle cx="500" cy="155" r="8" fill="#2dd4bf" stroke="#ffffff" stroke-width="2"/>
+                                <text x="500" y="180" fill="#e2e8f0" font-size="9" font-weight="bold" text-anchor="middle">Serang</text>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Info Cards Grid (Jarak, Kondisi Jalan, Tiket, Jam) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+                    <div class="bg-primary/5 p-3.5 rounded-2xl border border-primary/10">
+                        <span class="text-gray-500 font-medium block mb-1">🚗 Jarak dari Kediri</span>
+                        <p id="map-modal-distance" class="font-bold text-gray-800 text-sm">52 km (± 1.5 Jam)</p>
+                    </div>
+                    <div class="bg-accent/10 p-3.5 rounded-2xl border border-accent/20">
+                        <span class="text-gray-500 font-medium block mb-1">🛣️ Kondisi Jalan</span>
+                        <p id="map-modal-condition" class="font-bold text-gray-800 text-sm">100% Aspal Mulus</p>
+                    </div>
+                    <div class="bg-emerald-50 p-3.5 rounded-2xl border border-emerald-100">
+                        <span class="text-gray-500 font-medium block mb-1">🎟️ Harga Tiket (HTM)</span>
+                        <p id="map-modal-price" class="font-bold text-gray-800 text-sm">Rp 10.000 / orang</p>
+                    </div>
+                    <div class="bg-amber-50 p-3.5 rounded-2xl border border-amber-100">
+                        <span class="text-gray-500 font-medium block mb-1">⏰ Jam Operasional</span>
+                        <p id="map-modal-hours" class="font-bold text-gray-800 text-sm">24 Jam (Best 15.00)</p>
+                    </div>
+                </div>
+
+                <!-- Step-by-Step Directions (Panduan Rute Offline) -->
+                <div>
+                    <h4 class="font-bold text-gray-800 text-sm mb-3 flex items-center">
+                        <i data-lucide="navigation" class="w-4 h-4 mr-2 text-primary"></i> Panduan Rute Belok-demi-Belok (100% Offline)
+                    </h4>
+                    <div id="map-modal-steps" class="space-y-2">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Fasilitas Terdekat -->
+                <div>
+                    <h4 class="font-bold text-gray-800 text-sm mb-2 flex items-center">
+                        <i data-lucide="shield-check" class="w-4 h-4 mr-2 text-emerald-600"></i> Fasilitas Utama di Lokasi
+                    </h4>
+                    <div id="map-modal-facilities" class="flex flex-wrap gap-2">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal Footer Actions -->
+            <div class="p-4 bg-gray-50 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div class="flex items-center text-xs text-gray-500">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 mr-1.5"></i> Dapat diakses tanpa koneksi internet
+                </div>
+                <div class="flex items-center space-x-2 w-full sm:w-auto">
+                    <a id="map-modal-online-btn" href="#" target="_blank" rel="noopener noreferrer"
+                        class="bg-accent hover:bg-orange-500 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-colors shadow-sm flex items-center justify-center flex-1 sm:flex-none">
+                        <i data-lucide="external-link" class="w-3.5 h-3.5 mr-1.5"></i> Google Maps (Jika Online)
+                    </a>
+                    <button onclick="closeOfflineMap()"
+                        class="bg-primary hover:bg-teal-800 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-colors flex items-center justify-center flex-1 sm:flex-none">
+                        Tutup Peta
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ======================================================
+         LIGHTBOX MODAL UNTUK PREVIEW GAMBAR INTERAKTIF
+    ====================================================== -->
+    <div id="lightbox-modal"
+        class="fixed inset-0 z-[120] bg-black/80 backdrop-blur-md flex items-center justify-center p-4 transition-all duration-300 opacity-0 pointer-events-none hidden"
+        onclick="closeLightbox()">
+        
+        <div class="lightbox-content bg-white rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl relative transform scale-95 transition-all duration-300 max-h-[90vh] flex flex-col border border-white/20"
+            onclick="event.stopPropagation()">
+            
+            <!-- Tombol Close Lightbox -->
+            <button onclick="closeLightbox()"
+                class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition-colors focus:outline-none backdrop-blur-sm"
+                aria-label="Tutup Preview">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <!-- Lightbox Image -->
+            <div class="relative max-h-[60vh] bg-black overflow-hidden flex items-center justify-center">
+                <img id="lightbox-img" src="" alt="Preview Gambar" class="w-full h-full object-contain max-h-[60vh]">
+            </div>
+
+            <!-- Lightbox Caption & Actions -->
+            <div class="p-6 bg-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-gray-100">
+                <div>
+                    <h4 id="lightbox-title" class="text-xl font-bold text-gray-800 mb-1"></h4>
+                    <p id="lightbox-desc" class="text-sm text-gray-600 font-medium"></p>
+                </div>
+                <div class="flex items-center space-x-2 w-full sm:w-auto">
+                    <a id="lightbox-map-btn" href="#" target="_blank" rel="noopener noreferrer"
+                        class="hidden bg-accent hover:bg-orange-500 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-colors shadow-sm flex items-center justify-center flex-1 sm:flex-none">
+                        <i data-lucide="map-pin" class="w-4 h-4 mr-1.5"></i> Google Maps
+                    </a>
+                    <button onclick="closeLightbox(); openInWebModal('umum');"
+                        class="bg-primary hover:bg-teal-800 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-colors flex items-center justify-center flex-1 sm:flex-none">
+                        <i data-lucide="message-circle" class="w-4 h-4 mr-1.5"></i> Tanya Sagara
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOATING WIDGET BUTTON: KONSULTASI SAGARA -->
+    <button onclick="openInWebModal('umum')"
+        class="fixed bottom-6 right-6 z-40 bg-gradient-to-r from-primary to-teal-700 hover:from-teal-700 hover:to-primary text-white font-bold px-5 py-3.5 rounded-full shadow-2xl flex items-center space-x-2.5 transition-all transform hover:scale-105 active:scale-95 border-2 border-white/30 backdrop-blur-md group"
+        title="Buka Konsultasi Sagara">
+        <div class="relative">
+            <i data-lucide="messages-square" class="w-5 h-5 text-accent group-hover:rotate-12 transition-transform"></i>
+            <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-accent rounded-full animate-ping"></span>
+            <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-accent rounded-full"></span>
+        </div>
+        <span class="text-sm tracking-wide font-semibold">Konsultasi Sagara</span>
+    </button>
+
+</body>
+
+</html>
